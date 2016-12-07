@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+  	
+	<!-- <% if user_signed_in? %>
+	    <span>Здравствуйте, <%= current_user.email %></span>
+	    <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
+	<% else %>
+	    <%= link_to 'Войти', new_user_session_path %> или <%= link_to 'Зарегистрироваться', new_user_registration_path %>
+	<% end %> -->
+		
+
+  <ul class="nav navbar-nav navbar-right">
+			        <li class="dropdown">
+						<% if user_signed_in? %>
+	
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %><b class="caret"></b></a>
+			        <% else %>
+			        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">register<b class="caret"></b></a>
+			        	<% end %>
+			        <ul class="dropdown-menu">
+			            <li><%= link_to 'Войти', new_user_session_path %></li>
+			            <li class="divider"></li>
+			            <li> <%= link_to 'Зарегистрироваться', new_user_registration_path %></li>
+			            <li class="divider"></li>
+			            <li> <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %></li>
+			        </ul>
+			      </li>
+			    </ul>
+  </div>
+</nav>
+
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
