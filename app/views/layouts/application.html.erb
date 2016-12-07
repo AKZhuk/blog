@@ -14,9 +14,13 @@
 	    <div class="form-group">Здравствуйте, <%= current_user.email %></div>
 	    	<%= button_to 'Выйти', destroy_user_session_path, :method => :delete,:class => "btn"%>
 	<% else %>
-	   	 <%= button_to 'Войти', new_user_session_path, :class =>"btn" %> или <%= link_to 'Зарегистрироваться', new_user_registration_path , :class =>"btn"%>
+	   	 <%= link_to new_user_session_path, :class =>"btn" do %><button class="btn btn-success">Войти</button>
+	   	 <%end%>
+	   	 <%= link_to  new_user_registration_path do%>
+	   	 <button class="btn btn-info">Зарегистрироваться</button>
+	   	 <%end%>
 	<% end %>
-   </div>
+   	</div>
 
 </nav>
 
