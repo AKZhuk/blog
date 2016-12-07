@@ -12,3 +12,10 @@ table.table.table-striped
       td = button_to 'delete', article_path(article), method: :delete,
       						 data: { confirm: 'Are you shure?'}, :class => "btn btn-danger" 
 = button_to 'New Article', new_article_path, :class => "btn btn-success", :method => :get
+
+
+div.jumbotron
+  h1 Привет, blog!
+  p
+    =link_to @articles.first do 
+      button.btn huy
