@@ -1,11 +1,11 @@
-<%= form_for([@article, @article.comments.build]) do |f| %>
+<%= form_for.form-horizontal([@article, @article.comments.build]) do |f| %>
   <p>
     <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
+    <%= f.text_field.form-control :commenter %>
   </p>
   <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
+    <%= f.label.control-label :body %><br>
+    <%= f.text_area.form-control[rows="3"] :body %>
   </p>
   <p>
     <%= f.submit %>

@@ -8,8 +8,9 @@ Rails.application.routes.draw do
 
   resources :articles do
   	resources :comments
+  	resources :tests
   end
-  #get 'persons/profile', as: 'user_root'
+  get 'persons/profile', as: 'user_root'
 
-  root 'welcom#index'
+  root 'articles#index'
 end
