@@ -1,5 +1,5 @@
 class Question < ApplicationRecord
-  belongs_to :test, class_name: "Test"
+  belongs_to :test_form
   has_many :answers
 
 
