@@ -6,4 +6,5 @@ class TestsController < ApplicationController
 	def index
 		@test = Test_form.all
 	end
+
 end

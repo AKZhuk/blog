@@ -1,90 +1,150 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>Галактика</title>
   <%= csrf_meta_tags %>
-
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
 
-  <nav class="navbar navbar-default " role="navigation">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+<!--Navbar-->
+<nav class="navbar navbar-toggleable-md navbar-dark bg-primary">
+    <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarNav1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:3000/articles">Галактика</a>
-      </div>
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Ссылка</a></li>
-          <li><a href="#">Ссылка</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Действие</a></li>
-              <li><a href="#">Другое действие</a></li>
-              <li><a href="#">Что-то еще</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Отдельная ссылка</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Еще одна отдельная ссылка</a></li>
+        <a class="navbar-brand" href="#">
+            <strong> Галактика</strong>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost:3000/">Главная <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"> О нас</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">Контакты </a>
+                </li>
             </ul>
-          </li>
-        </ul>
-       <!-- <form class="navbar-form navbar-left" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">Отправить</button>
-        </form>-->
-
-        <form class="navbar-form navbar-right">
-          <div class="btn-group">
-            <% if user_signed_in? %>
-              <button type="button" class="btn btn-default ">Здравствуйте, <%= current_user.email %></button>
-              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-               <span class="caret"></span>
-               <span class="sr-only">Меню с переключением</span>
-             </button>
-             <ul class="dropdown-menu" role="menu">
-              <li> <%= link_to 'Выйти', destroy_user_session_path, :method => :delete%></li>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item dropdown btn-group">
+                    <% if user_signed_in? %>
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <%= current_user.email%>
+                      </a>
+                      <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                          <%= link_to 'Выйти', destroy_user_session_path, class: "dropdown-item" , :method => :delete%>
+                      </div>
+                      <% else %>
+                        <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-sign-in"></i> Вход</a>
+                        <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                            <%= link_to 'Войти', new_user_session_path %>
+                            <%= link_to 'Регистрация', new_user_registration_path, class: "dropdown-item"%>
+                        </div>
+                    </li>
+                      <% end %>
             </ul>
-          <% else %>
-            <button type="button" class="btn btn-success">Вход</button>
-            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-              <span class="caret"></span>
-              <span class="sr-only">Меню с переключением</span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><%= link_to 'Войти', new_user_session_path %></li>
-              <li><%= link_to  'Регистрация', new_user_registration_path%></li>
-            </ul>     
-          <% end %>
         </div>
-      </form>
-
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
 </nav>
 
+<div class="container">
+<main>
+  <%= yield %>
+</main>
+</div>
 
+<!--Footer-->
+<footer class="page-footer center-on-small-only">
 
-          </head>
+    <!--Footer Links-->
+    <div class="container">
+        <div class="row">
 
-          <body>
-            <%= yield %>
-          </body>
-          
+            <!--First column-->
+            <div class="col-md-3 offset-md-1">
+                <%= image_tag("logo_by_200_white.png", :alt => "rss feed") %>
+                <p>
+                <p>Центр разработки информационных технологий корпорации «Галактика». </p>
+            </div>
+            <!--/.First column-->
 
+            <hr class="hidden-md-up">
 
-          
+            <!--Second column-->
+            <div class="col-md-2 offset-md-1">
+                <h5 class="title">Links</h5>
+                <ul>
+                    <li><a href="#!">Link 1</a></li>
+                    <li><a href="#!">Link 2</a></li>
+                    <li><a href="#!">Link 3</a></li>
+                    <li><a href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <!--/.Second column-->
 
-          </html>
+            <hr class="hidden-md-up">
+
+            <!--Third column-->
+            <div class="col-md-2">
+                <h5 class="title">Нас можно найти</h5>
+                <ul>
+                   <li><a href="https://www.youtube.com/channel/UCEHqMEF3QOrbzWatW3dLMxQ">Наш youtube канал</a></li>
+                    <li><a href="https://www.galaktika.by/">Galaktika.by</a></li>
+                    <li><a href="https://vk.com/galaktikacorp">Vkontakte</a></li>
+                    <li><a href="https://www.facebook.com/galaktikacorp">Facebook</a></li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+
+            <hr class="hidden-md-up">
+
+            <!--Fourth column-->
+            <div class="col-md-2">
+                <h5 class="title">Наши клиенты</h5>
+                <ul>
+                    <li><a href="https://www.galaktika.ru/blog/angarskij-zavod-polimerov.html">Роснефть</a></li>
+                    <li><a href="#!">Транснефть</a></li>
+                    <li><a href="#!">Газпром</a></li>
+                    <li><a href="#!">ТольяттиАзот</a></li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <hr>
+
+    <!--Social buttons-->
+    <div class="social-section">
+        <ul>
+            <li><a class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
+            <li><a class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
+            <li><a class="btn-floating btn-small btn-gplus"><i class="fa fa-google-plus"> </i></a></li>
+            <li><a class="btn-floating btn-small btn-li"><i class="fa fa-linkedin"> </i></a></li>
+            <li><a class="btn-floating btn-small btn-git"><i class="fa fa-github"> </i></a></li>
+            <li><a class="btn-floating btn-small btn-pin"><i class="fa fa-pinterest"> </i></a></li>
+            <li><a class="btn-floating btn-small btn-ins"><i class="fa fa-instagram"> </i></a></li>
+        </ul>
+    </div>
+    <!--/.Social buttons-->
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2017 Разработано: <a href="https://www.MDBootstrap.com"> Корпарация "Галактика" </a>
+
+        </div>
+    </div>
+    <!--/.Copyright-->
+
+</footer>
+<!--/.Footer-->
+</body>
+
+</html>

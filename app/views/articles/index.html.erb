@@ -1,178 +1,209 @@
-                    <span class="navbar-toggler-icon"></span>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Material Design Bootstrap -->
-    <link href="shablon/corp/corporate/css/mdb.min.css" rel="stylesheet">
-
-    <!-- Template styles -->
-    
-
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
 </head>
+<main>
+	<!--Main layout-->
+	<div class="container">
+	<!--Second row-->
+	<div class="row">
+		<% @articles.each do |article| %>
+		<div class=" col-lg-4">
+			<div class="card-overlay" style="background-image: url('https://mdbootstrap.com/img/Photos/Exposure/Dark/courses.jpg'); margin-bottom: 15px; min-height:370px !important;">
+				<!--Content-->
+				<div class="white-text text-center">
+					<div class="card-block">
+						<h5 class="teal-text"><i class="fa fa-pie-chart"></i> Модуль</h5>
+						<h3><%= article.title %></h3>
+						<p><%= article.description %></p>
+						<%= link_to(  article_path(article), :class => "btn btn-lg btn-white-outline animated fadeInLeft" ) do %>
+						<i class="fa fa-clone left"></i>
+						Открыть
+						<% end %>
+					</div> 
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	<div class="row" >
+		<!--Section: Testimonials v.3-->
+		<section class="section team-section" >
+			<!--Section heading-->
+			<h1 class="section-heading text-center"></h1>
+			<!--Section description-->
+			<p class="section-description">Мы гордимся нашими клиентами, и они отвечают нам взаимностью!
+				В этом разделе мы опубликовали лишь некоторые отзывы руководителей самых разных организаций, которые уже пользуются услугами банка в рамках зарплатного проекта. Мы будем рады видеть вас в числе наших клиентов!</p>
+			<!--First row-->
+			<div class="row text-center">
+				<!--First column-->
+				<div class="col-md-4 mb-r">
+					<div class="testimonial">
+						<!--Avatar-->
+						<div class="avatar" style="margin:0 0 30px 40px;">
+							<img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg" class="rounded-circle img">
+						</div>
+						<!--Content-->
+						<h4>Светлана Левченок</h4>
+						<h5>Начальник отдела АСУП <br>«МАЗ-Купава» </h5>
+						<p><i class="fa fa-quote-left"></i> После перехода на «Галактику ERP» мы автоматизировали бизнес-процессы учета операций оформления договорных отношений, операций снабжения, сбыта, складского учета производственных складов. Это позволило оптимизировать часть бизнес-процессов.</p>
+						<!--Review-->
+						<div class="orange-text">
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star-half-full"> </i>
+						</div>
+					</div>
+				</div>
+				<!--/First column-->
+				<!--Second column-->
+				<div class="col-md-4 mb-r">
+					<div class="testimonial">
+						<!--Avatar-->
+						<div class="avatar" style="margin:0 0 30px 40px;">
+							<img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg" class="rounded-circle img-fluid">
+						</div>
+						<!--Content-->
+						<h4>Татьяна Петренко</h4>
+						<h5>Главный бухгалтер-аудитор Группы компаний «АЛЮТЕХ»</h5>
+						<p><i class="fa fa-quote-left"></i> Галактика ERP» помогает автоматизировать и детализировать все хозяйственные операции, получать промежуточные результаты на любом этапе учета. Вся отчетность для руководства группы компаний формируется в «Галактике ERP».</p>
+						<!--Review-->
+						<div class="orange-text">
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+						</div>
+					</div>
+				</div>
+				<!--/Second column-->
+				<!--Third column-->
+				<div class="col-md-4 mb-r">
+					<div class="testimonial">
+						<!--Avatar-->
+						<div class="avatar" style="margin:0 0 30px 40px;">
+							<img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(3).jpg" class="rounded-circle img-fluid">
+						</div>
+						<!--Content-->
+						<h4>Михаил Щербацевич</h4>
+						<h5>Начальник отдела таможенной статистики и анализа ГТК РБ</h5>
+						<p><i class="fa fa-quote-left"></i> Внедрение «Галактика ERP» положительно сказалась на автоматизации системы учета задержанных и конфискованных товаров. Проще говоря, система «Галактика ERP» помогла нам решить проблему учета конфиската. </p>
+						<!--Review-->
+						<div class="orange-text">
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star"> </i>
+							<i class="fa fa-star-o"> </i>
+						</div>
+					</div>
+				</div>
+				<!--/Third column-->
+			</div>
+			<!--/First row-->
+		</section>
+		<!--Naked Form-->
 
-<body>
-    <main>
+<!--Section: Contact v.1-->
+<section class="section mb-4">
+    <!--Section sescription-->
+    <p class="section-description mb-5"> Хотите сотрудничать? Остались вопросы? Напишите нам:</p>
 
-        <!--Main layout-->
-        <div class="container">
-            <!--First row-->
-            <div class="row wow fadeIn" data-wow-delay="0.2s">
-                <div class="col-lg-7">
-                    <!--Featured image -->
-                    <div class="view overlay hm-white-light z-depth-1-half">
-                        <img src="https://www.galaktika.ru/erp/files/2012/06/shutterstock_101818972-960x340.jpg" class="img-fluid " alt="">
-                        <div class="mask">
-                        </div>
+    <div class="row">
+
+        <!--First column-->
+        <div class="col-md-5">
+
+            <!--Form with header-->
+            <div class="card">
+
+                <div class="card-block">
+                    <!--Header-->
+                    <div class="form-header mdb-color">
+                        <h3><i class="fa fa-envelope"></i> Задайте свой вопрос:</h3>
                     </div>
-                    <br>
-                </div>
-
-                <!--Main information-->
-                <div class="col-lg-5">
-                    <h2 class="h2-responsive">Галактика ERP 9.1</h2>
-                    <hr>
-                    <p>Новая версия интегрированной системы управления предприятием Галактика ERP 9.1 В данной версии Галактики ERP значительно...</p>
-                    <a href="" class="btn btn-info">Get it now!</a>
-                </div>
-            </div>
-            <!--/.First row-->
-
-            <hr class="extra-margins">
-
-            <!--Second row-->
-            <div class="row">
-                <!--First columnn-->
-
-
-
-<% @articles.each do |article| %>
-                <div class="col-lg-4">
-                    <!--Card-->
-                    <div class="card wow fadeIn" data-wow-delay="0.4s">
-
-                        <!--Card image-->
-                        <div class="view overlay hm-white-slight">
-                            <img src="http://mdbootstrap.com/img/Photos/Horizontal/Work/4-col/img%20(37).jpg" class="img-fluid" alt="">
-                            <a href="<%article_path(article)%>">
-                                <div class="mask"></div>
-                            </a>
-                        </div>
-                        <!--/.Card image-->
-
-                        <!--Card content-->
-                        <div class="card-block">
-                            <!--Title-->
-                            <h4 class="card-title"><%= article.title %></h4>
-                            <!--Text-->
-                            <p class="card-text"><%= article.description %></p>
-                            <%= link_to( 'Show', article_path(article), :class => "btn btn-info") %>
-                        </div>
-                        <!--/.Card content-->
-
+                    <!--Body-->
+                    <div class="md-form">
+                        <i class="fa fa-user prefix"></i>
+                        <input type="text" id="form3" class="form-control">
+                        <label for="form3">Ваше имя</label>
                     </div>
-                    <!--/.Card-->
+
+                    <div class="md-form">
+                        <i class="fa fa-envelope prefix"></i>
+                        <input type="text" id="form2" class="form-control">
+                        <label for="form2">Ваш email</label>
+                    </div>
+
+                    <div class="md-form">
+                        <i class="fa fa-tag prefix"></i>
+                        <input type="text" id="form32" class="form-control">
+                        <label for="form32">Организация</label>
+                    </div>
+
+                    <div class="md-form">
+                        <i class="fa fa-pencil prefix"></i>
+                        <textarea type="text" id="form8" class="md-textarea"></textarea>
+                        <label for="form8">Ваш вопрос</label>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-indigo">Отправить</button>
+                    </div>
+
                 </div>
-                <!--First columnn-->
-                 <% end %>
-               
-            </div>
-            <!--/.Second row-->
-        </div>
-        <!--/.Main layout-->
-
-    </main>
-
-    <!--Footer-->
-    <footer class="page-footer center-on-small-only">
-
-        <!--Footer Links-->
-        <div class="container-fluid">
-            <div class="row">
-
-                <!--First column-->
-                <div class="col-md-3 offset-lg-1 hidden-lg-down">
-                    <h5 class="title">Унитарное предприятие «Топ Софт»</h5>
-                    <p>Центр разработки информационных технологий корпорации «Галактика». </p>
-
-                    <p>Более 1 000 успешных внедрений систем автоматизации управления предприятием.</p>
-                </div>
-                <!--/.First column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Second column-->
-                <div class="col-lg-2 col-md-4 offset-lg-1">
-                    <h5 class="title">Нас можно найти</h5>
-                    <ul>
-                        <li><a href="https://www.youtube.com/channel/UCEHqMEF3QOrbzWatW3dLMxQ">Наш youtube канал</a></li>
-                        <li><a href="https://www.galaktika.by/">Galaktika.by</a></li>
-                        <li><a href="https://vk.com/galaktikacorp">Vkontakte</a></li>
-                        <li><a href="https://www.facebook.com/galaktikacorp">Facebook</a></li>
-                    </ul>
-                </div>
-                <!--/.Second column-->
-
-                <hr class="hidden-md-up">
-
-                <!--Third column-->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="title">Наши клиенты</h5>
-                    <ul>
-                        <li><a href="https://www.galaktika.ru/blog/angarskij-zavod-polimerov.html">Роснефть</a></li>
-                        <li><a href="#!">Транснефть</a></li>
-                        <li><a href="#!">Газпром</a></li>
-                        <li><a href="#!">ТольяттиАзот</a></li>
-                    </ul>
-                </div>
-                <!--/.Third column-->
-
-                <hr class="hidden-md-up">
 
             </div>
+            <!--/Form with header-->
+
         </div>
-        <!--/.Footer Links-->
+        <!--/First column-->
 
-        <hr>
+        <!--Second column-->
+        <div class="col-md-7">
 
-    </footer>
-    <!--/.Footer-->
+            <!--Google map-->
+            <div id="map-container" class="z-depth-1-half map-container" style="height: 400px"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2349.331116494321!2d27.593858214920566!3d53.92586103884704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbcf094cae505d%3A0x9f01f4bdd09e92d4!2z0YPQuy4g0KHRg9GA0LPQsNC90L7QstCwIDI4LCDQnNC40L3RgdC6!5e0!3m2!1sru!2sby!4v1494100381824" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe></div>
 
+            <br>
+            <!--Buttons-->
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <a class="btn btn-large btn-indigo"><i class="fa fa-map-marker"></i></a>
+                    <p>Минск, Сурганова, 28в</p>
+                    
+                </div>
 
-    <!-- SCRIPTS -->
+                <div class="col-md-4">
+                    <a class="btn btn-large btn-indigo"><i class="fa fa-phone prefix"></i></a>
+                    <p>+375 (17) 294 99 88</p>
+                    <p>Понедельник - Пятница, 8:00-18:00</p>
+                </div>
 
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+                <div class="col-md-4">
+                    <a class="btn btn-large btn-indigo"><i class="fa fa-envelope prefix"></i></a>
+                    <p>pnr@galaktika.by</p>
+                    <p>service@galaktika.by</p>
+                </div>
+            </div>
 
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/tether.min.js"></script>
+        </div>
+        <!--/Second column-->
 
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    </div>
 
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    
-    <script>
-    new WOW().init();
-    </script>
-
-</body>
-
+</section>
+	</div>
+	<!--/.Second row-->
+</div>
+<!--/.Main layout-->
+</main>
 </html>
-
-
-
-
