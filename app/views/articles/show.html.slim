@@ -1,10 +1,12 @@
 section.section.section-blog-fw
+  br
   .row
     .col-md-12
       .view.overlay.hm-white-slight[style="margin-bottom: 0 !important"]
         - @article.videos.each do |video|
-				iframe.embed-responsive-item[width="100%" height="500px" src= video.link frameborder="0" allowfullscreen]
-      
+        		div.embed-responsive.embed-responsive-16by9
+					iframe.embed-responsive-item[src= video.link allowfullscreen]
+
       .jumbotron
         h2.text-center
             = @article.title
@@ -34,19 +36,20 @@ section.section.section-blog-fw
 				.col-sm-10.col-12
 				    h3.user-name 
 				    	= comment.commenter
+
 					.card-data
 						ul
 							li.comment-date
 								i.fa.fa-clock-o 
 								=time_ago_in_words(comment.created_at)
 					p.comment-text 
-						|Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur.
-
+						= comment.body
 		section
 		  .reply-form
 		    h1.section-heading
 		      | Оставить отзыв 
-		    p.text-center = current_user.email
+		    - if current_user == !nil
+			  p.text-center = current_user.email
 		    .row
 		      .col-sm-2.col-12
 		        img.rounded-circle[src="http://nightkids.pro/images/noava.jpg"]
@@ -56,6 +59,9 @@ section.section.section-blog-fw
 						  = f.hidden_field :commenter, :value => current_user.email
 						  = f.text_area :body, :id => "form8" ,:class => "md-textarea"
 						  label[for="form8"]
-		            		| Ваше сообщение
+		            		| Ваше сообщение 
+		            		p.text-center = current_user.email
 						  .text-center
-				          	= f.submit :class => "btn btn-primary"
+				          	= f.submit 'отправить',:class => "btn btn-primary"
+				
+			   

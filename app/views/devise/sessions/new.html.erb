@@ -1,10 +1,10 @@
 
 
-
-<div class="card">
+<br>
+<div class="card" style="width:40%" align="center">
     <div class="card-block">
         <div class="text-center">
-            <h3><i class="fa fa-lock"></i> Login:</h3>
+            <h3><i class="fa fa-lock"></i> Авторизация:</h3>
             <hr class="mt-2 mb-2">
         </div>
 
@@ -16,7 +16,7 @@
 
   <div class="md-form">
     <%= f.label :password %><br />
-    <%= f.password_field :password, :class => "form-control", autocomplete: "off" %>
+    <%= f.password_field :пароль, :class => "form-control", autocomplete: "off" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -26,8 +26,8 @@
     </div>
   <% end -%>
   <div class="actions">
-    <%= f.submit "Log in", :class =>"btn btn-deep-purple" %>
+    <%= f.submit "Войти", :class =>"btn btn-deep-purple" %>
   </div>
 <% end %>
 </div>
-<%= render "devise/shared/links" %>
+

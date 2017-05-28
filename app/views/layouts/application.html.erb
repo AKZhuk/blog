@@ -29,6 +29,9 @@
                     <a class="nav-link">Контакты </a>
                 </li>
             </ul>
+            <form class="form-inline waves-effect waves-light">
+                <input class="form-control" type="text" placeholder="Поиск">
+            </form>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown btn-group">
                     <% if user_signed_in? %>
@@ -36,6 +39,8 @@
                       <%= current_user.email%>
                       </a>
                       <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                          <%= link_to 'Настройка', persons_profile_path, class: "dropdown-item" %>
+                            
                           <%= link_to 'Выйти', destroy_user_session_path, class: "dropdown-item" , :method => :delete%>
                       </div>
                       <% else %>
@@ -76,12 +81,11 @@
 
             <!--Second column-->
             <div class="col-md-2 offset-md-1">
-                <h5 class="title">Links</h5>
+                <h5 class="title">Офисы</h5>
                 <ul>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
+                    <li><a href="https://www.galaktika.ru/">Москва</a></li>
+                    <li><a href="https://www.galaktika.ru/spb/">Санкт-Петербург</a></li>
+                    <li><a href="https://www.galaktika.by/">Минск</a></li>
                 </ul>
             </div>
             <!--/.Second column-->

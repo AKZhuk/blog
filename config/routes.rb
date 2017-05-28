@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :admins
   devise_for :users
 
   get 'persons/profile'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get 'welcom/index'
-
+  resources :comments
+  resources :queries
   resources :articles do
   	resources :comments
   	resources :tests

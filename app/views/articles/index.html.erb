@@ -10,27 +10,62 @@
 <main>
 	<!--Main layout-->
 	<div class="container">
-	<!--Second row-->
-	<div class="row">
-		<% @articles.each do |article| %>
-		<div class=" col-lg-4">
-			<div class="card-overlay" style="background-image: url('https://mdbootstrap.com/img/Photos/Exposure/Dark/courses.jpg'); margin-bottom: 15px; min-height:370px !important;">
-				<!--Content-->
-				<div class="white-text text-center">
-					<div class="card-block">
-						<h5 class="teal-text"><i class="fa fa-pie-chart"></i> Модуль</h5>
-						<h3><%= article.title %></h3>
-						<p><%= article.description %></p>
-						<%= link_to(  article_path(article), :class => "btn btn-lg btn-white-outline animated fadeInLeft" ) do %>
-						<i class="fa fa-clone left"></i>
-						Открыть
-						<% end %>
-					</div> 
-				</div>
-			</div>
-		</div>
-		<% end %>
-	</div>
+
+	
+<!--Section: Features v.1-->
+<section class="section feature-box">
+
+    <!--Section heading-->
+    <!--Section sescription-->
+    <p></p>
+    <h2 class="section-description lead" style="margin-top:40px">Обучения ERP-системе "Галактика". Просмотр уроков, общение с одногруппниками, контроль знаний.</h2>
+
+</section>
+<!--/Section: Features v.1-->
+
+
+
+<!--Projects section v.2-->
+<section class="section">
+
+    <!--First row-->
+    <div class="row text-center">
+    <% @articles.each do |article| %>
+
+
+        <!--/Second column-->
+
+        <!--Third column-->
+        <div class="col-lg-4 col-md-6 mb-r">
+
+            <!--Featured image-->
+            <div class="view overlay hm-white-slight z-depth-2">
+                <img src="<%= article.image %>">
+                <a>
+                    <div class="mask waves-effect waves-light"></div>
+                </a>
+            </div>
+
+            <!--Excerpt-->
+            <div class="card-block">
+                <a href="" class="indigo-text"><h5><i class="fa fa-plane"></i> Модуль </h5></a>
+                <h3><%= article.title %></h3>
+                <p><%= article.description %></p>
+                 <%= link_to(  article_path(article), :class => "btn btn-lg btn-indigo" ) do %>
+            открыть
+            <%end%>
+            </div>
+
+        </div>
+        <!--/Third column-->
+    <% end %>
+    </div>
+    <!--/First row-->
+</section>
+<!--/Projects section v.2-->
+	
+
+
 	<div class="row" >
 		<!--Section: Testimonials v.3-->
 		<section class="section team-section" >
@@ -124,6 +159,7 @@
 
             <!--Form with header-->
             <div class="card">
+            <%= form_for :article,  url: articles_path do |f| %>
 
                 <div class="card-block">
                     <!--Header-->
@@ -133,37 +169,37 @@
                     <!--Body-->
                     <div class="md-form">
                         <i class="fa fa-user prefix"></i>
-                        <input type="text" id="form3" class="form-control">
+                        <%= f.text_field :name ,class: "form-control", id: "form3" %>
                         <label for="form3">Ваше имя</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fa fa-envelope prefix"></i>
-                        <input type="text" id="form2" class="form-control">
+                        <%= f.text_field :email ,class: "form-control", id: "form2" %>
                         <label for="form2">Ваш email</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fa fa-tag prefix"></i>
-                        <input type="text" id="form32" class="form-control">
+                        <%= f.text_field :organization ,class: "form-control", id: "form32" %> 
                         <label for="form32">Организация</label>
                     </div>
 
                     <div class="md-form">
                         <i class="fa fa-pencil prefix"></i>
-                        <textarea type="text" id="form8" class="md-textarea"></textarea>
+                        <%= f.text_area :text ,class: "md-textarea", id: "form8" %>
                         <label for="form8">Ваш вопрос</label>
                     </div>
 
                     <div class="text-center">
-                        <button class="btn btn-indigo">Отправить</button>
+                    	<%= f.submit 'отправить', class: "btn btn-indigo"%>
                     </div>
 
                 </div>
 
             </div>
             <!--/Form with header-->
-
+<% end %>
         </div>
         <!--/First column-->
 

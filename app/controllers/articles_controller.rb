@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-	 #before_filter :authenticate_user!
+	 
 	def new
 		@article = Article.new
 	end
@@ -9,12 +9,9 @@ class ArticlesController < ApplicationController
 	end	
 	
 	def create
-		@article = Article.new(params.require(:article).permit(:title, :text))
-		if @article.save
-			redirect_to @article
-		else
-			render 'new'
-		end	
+  		@query = Query.new(params.require(:article).permit(:name, :email, :organization, :text))
+  		@query.save
+  		redirect_to articles_path
 	end	
 
 	def update
@@ -37,7 +34,6 @@ class ArticlesController < ApplicationController
 	def destroy
 		@article = Article.find(params[:id])
 		@article.destroy
-
 		redirect_to articles_path
 	end		
 end

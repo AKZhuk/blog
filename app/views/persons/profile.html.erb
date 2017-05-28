@@ -1,15 +1,60 @@
-<h1>Persons#profile</h1>
+<h1>Личные данные</h1>
 <%= form_for :user do |f| %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :email %>
-  </p>
+
+
+            <div class="md-form">
+              <input value="<%=current_user.email %>" type="text" id="form6" class="form-control">
+              <label class="active" for="form6">Ваш e-mail</label>
+          </div>
+          <div class="md-form">
+              <input value="<%=current_user.name %>" type="text" id="form6" class="form-control">
+              <label class="active" for="form6">Ваше имя</label>
+          </div>
+          <div class="md-form">
+              <input value="<%=current_user.lastname %>" type="text" id="form6" class="form-control">
+              <label class="active" for="form6">Ваша фамилия</label>
+          </div>
+          <div class="md-form">
+              <input value="<%=current_user.organization %>" type="text" id="form6" class="form-control">
+              <label class="active" for="form6">Организация</label>
+          </div>
+  <%= f.submit " Сохранить" , :class => "btn btn-success" %>
+</p>
+<% end %>         
+
+<table class="table">
+   
+    <tbody>
+        <tr>
+            <th scope="row">e-mail</th>
+            <td>  <%=current_user.email %></td>
+            <td>
+                <a class="blue-text"><i class="fa fa-user"></i></a>
+                <a class="teal-text"><i class="fa fa-pencil"></i></a>
+                <a class="red-text"><i class="fa fa-times"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Имя</th>
+            <td><%=current_user.name %></td>
+            <td>
+                <a class="blue-text"><i class="fa fa-user"></i></a>
+                <a class="teal-text"><i class="fa fa-pencil"></i></a>
+                <a class="red-text"><i class="fa fa-times"></i></a>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Фамилия</th>
+            <td><%=current_user.lastname %></td>
+            <td>
+               <a class="blue-text"><i class="fa fa-user"></i></a>
+                <a class="teal-text"><i class="fa fa-pencil"></i></a>
+                <a class="red-text"><i class="fa fa-times"></i></a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<p>
  
-  <p>
-    <%= f.label :text %><br>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
