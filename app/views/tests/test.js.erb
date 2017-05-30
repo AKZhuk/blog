@@ -1,0 +1,9 @@
+<% if @result %>
+$('form').on('ajax:success', function() {
+ $('#centralModalSuccess').modal('toggle');
+  })
+<%else%>
+$('form').on('ajax:success', function() {
+ $('#centralModalDanger').modal('toggle');
+  })
+<%end%>

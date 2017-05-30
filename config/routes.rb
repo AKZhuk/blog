@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :queries
   resources :articles do
   	resources :comments
-  	resources :tests
+  	resources :tests do
+      post 'test'
+    end
   end
   get 'persons/profile', as: 'user_root'
 

@@ -1,44 +1,29 @@
 	 <div style="height:50px;"></div>
 	<div class="row">
 <div class="d-flex justify-content-start">
-
 <div class="chip well fixed" style="position: fixed"><span class="badge grey">Осталось времени:<h3 id="demo"></h3></div>
 </span>
                 <p id="demo"></p></div>
-
 	<div class=" col-lg-6 offset-2 ">
-
-		 
 		  <div class="col text-center">
                 <h5><%=@test.name%></h5>
                 <br>
             </div>
-        
-
-
-
 			<!-- Display the countdown timer in an element -->
-
 <script>
 // Set the date we're counting down to
 var countDownDate =new Date().getTime()+760000;
-
 // Update the count down every 1 second
 var x = setInterval(function() {
-
   // Get todays date and time
   var now = new Date().getTime();
-
   // Find the distance between now an the count down date
   var distance = countDownDate - now;
-
   // Time calculations for days, hours, minutes and seconds
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
   // Display the result in the element with id="demo"
   document.getElementById("demo").innerHTML = minutes + "m " + seconds + "s ";
-
   // If the count down is finished, write some text 
   if (distance < 0) {
     clearInterval(x);
@@ -46,29 +31,77 @@ var x = setInterval(function() {
   }
 }, 1000);
 </script>
-
-
-			<form>
+			<%= form_tag article_test_test_path(test_id: @test), remote: true, method: :post do %>
 			  <% @test.questions.each do |question|%>
-<div class="list-group" style="margin-bottom:30px";>
-  <a href="#" class="list-group-item active">
-    <%=question.text%>
-  </a>
-  <fieldset class="list-group-item" id=<%=question.id%>>
-				    <% question.answers.each do |answer| %>
-				    <fieldset class="form-group">
-					    <input name=<%=question.id%> style="margin:7px 7px 0 0 ; float:left;" type="radio" id="radio1" />
-					    <label for=<%=question.id%>><%= answer.answer %></label>
-					</fieldset>
-					<% end %>
-					</fieldset> 
-</div>
-			
-
-					
+			  			<div class="list-group" style="margin-bottom:30px";>
+						  <a href="#" class="list-group-item active">
+						    <%=question.text%>
+						  </a>
+			  		<% question.answers.each do |answer| %> 
+			  			<div class="list-group-item">
+			  			<%= radio_button_tag  "test[#{question.id}]",  answer.id, false %>
+			  			<%= label :contactmethod, answer.answer %>
+			  			</div>
+			  		<% end %>
+			  			</div>
 			<%end%>
-			</form>
-		<button class="btn btn-success">Ответить →</button>
+<!-- Central Modal Medium Danger -->
+<div class="modal fade" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading lead">Неудача</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <div class="text-center">
+                    <i class="fa fa-check fa-4x mb-1 animated rotateIn"></i>
+                    <p>Вы допустили несколько ошибок, попробуйте повторить материал и приходите завтра. У вас все получится!</p>
+                </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary-modal">ОК<i class="fa fa-diamond ml-1"></i></a>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- Central Modal Medium Danger-->
+<!-- Central Modal Medium Success -->
+<div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-success" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <p class="heading lead">Успешное прохождение</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                <div class="text-center">
+                    <i class="fa fa-check fa-4x mb-1 animated rotateIn"></i>
+                    <p>Поздравляем! Вы успешно прошли курс. Свои достижения вы можете посмотреть на вашей персональной странице.</p>
+                </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer justify-content-center">
+                <a type="button" class="btn btn-primary-modal close">ОК <i class="fa fa-diamond ml-1"></i></a>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- Central Modal Medium Success-->
+			<button class="btn btn-success">Ответить →</button>
+		<% end %>
 		</div>
 	</div>	
-
